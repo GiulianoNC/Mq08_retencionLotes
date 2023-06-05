@@ -104,13 +104,9 @@ public class Configuracion extends AppCompatActivity {
         Obj_editor.putString("estado", estado.getText().toString());
         Obj_editor.putString("rest", rest.getText().toString());
         Obj_editor.putString("cbd", CBD.getText().toString());
-
-
         Obj_editor.commit();
 
-
         Intent siguiente = new Intent(Configuracion.this, LoginActivity.class);
-
         siguiente.putExtra("direcciones", direccion.getText().toString());
         siguiente.putExtra("sucursal", sucursal.getText().toString());
         siguiente.putExtra("estado", estado.getText().toString());

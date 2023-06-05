@@ -112,7 +112,7 @@ public class SegundaPantalla extends AppCompatActivity {
             public void run() {
                 agregar3();
             }
-        }, 0, 5000);
+        }, 0, 10000);
     }
 
     public void scan(View v){

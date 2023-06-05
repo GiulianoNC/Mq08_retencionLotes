@@ -107,10 +107,10 @@ public class PrimeraPantalla extends AppCompatActivity {
         adapter = new Adaptador(dbContactos.mostrarDatos());
         datos.setAdapter(adapter);
 
-       if (limpiezaGlobal == 1){
+   /*    if (limpiezaGlobal == 1){
            limpiezaAutomatica();
            limpiezaGlobal= 0;
-       }
+       }*/
 
     }
     public void enviar (View v){

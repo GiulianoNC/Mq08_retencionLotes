@@ -2,7 +2,7 @@ package com.quantum.mq08.mq08;
 
 import static com.quantum.mq08.mq08.Configuracion.direc;
 import static com.quantum.mq08.mq08.Configuracion.estadoGlobal;
-import static com.quantum.mq08.mq08.Configuracion.loteGlobal;
+import static com.quantum.mq08.mq08.Configuracion.restGlobal;
 import static com.quantum.mq08.mq08.Configuracion.sucursalGlobal;
 
 import android.content.Context;
@@ -130,6 +130,441 @@ public class LoginActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+  /*  public void ingresar (View v){
+
+        String usuario = user.getText().toString();
+        String contra = contraseña.getText().toString();
+
+        String direccion = getIntent().getStringExtra("direcciones");
+        urls.setText(direccion);
+
+        if (user.length() == 0 && contraseña.length() == 0) {
+            Toast.makeText(this, "Debes ingresar un usuario y contraseña", Toast.LENGTH_SHORT).show();
+        }
+        if (user.length() != 0 && contraseña.length() != 0) {
+
+            if (urls.length() == 0)  {
+                Intent siguiente = new Intent(LoginActivity.this, Configuracion.class);
+                startActivity(siguiente);
+            }else{
+
+                Toast.makeText(LoginActivity.this, "Procesando", Toast.LENGTH_SHORT).show();
+
+                usuarioGlobal = user.getText().toString();
+                contraseñaGlobal = contraseña.getText().toString();
+
+                if(restGlobal.equals("1") || restGlobal.equals("")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getUser(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                        //respuesta fallida
+
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                }else  if(restGlobal.equals("2")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getEnviar3(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                        //respuesta fallida
+
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                }else if(restGlobal.equals("3")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getEnviar3(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                        //respuesta fallida
+
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                } else if(restGlobal.equals("4")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getEnviar4(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                        //respuesta fallida
+
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                }else if(restGlobal.equals("5")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getEnviar5(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        //respuesta fallida
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                }else if(restGlobal.equals("6")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getEnviar6(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        //respuesta fallida
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                } else if(restGlobal.equals("7")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getEnviar7(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        //respuesta fallida
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                }else  if(restGlobal.equals("8")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getEnviar8(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        //respuesta fallida
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                }else if(restGlobal.equals("9")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getEnviar9(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        //respuesta fallida
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                }else if(restGlobal.equals("10")){
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(direc)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    Conexion conexion = retrofit.create(Conexion.class);
+                    Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
+
+                    Call<Cuerpo2> call = conexion.getEnviar10(login);
+                    call.enqueue(new Callback<Cuerpo2>() {
+
+                        //respuesta exitosa
+                        @Override
+                        public void onResponse(Call<Cuerpo2> call, Response<Cuerpo2> response) {
+
+                            if (response.isSuccessful()) {
+                                int statusCode = response.code();
+
+                                //llamada de la clase cuerpo y su respuesta de body
+                                if (statusCode <= 200) {
+                                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                                    Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
+                                    startActivity(siguiente);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
+                                }
+                            }else{
+                                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        //respuesta fallida
+                        @Override
+                        public void onFailure(Call<Cuerpo2> call, Throwable t) {
+                            //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            user.setText("mensaje " + t);
+                        }
+                    });
+                }else{
+                    Toast.makeText(LoginActivity.this, "Completar en configuración los datos "  , Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }
+        SharedPreferences preferecias =  getSharedPreferences("datos",Context.MODE_PRIVATE);
+        SharedPreferences.Editor Obj_editor = preferecias.edit();
+        Obj_editor.putString("usuario", user.getText().toString());
+        Obj_editor.putString("password", contraseña.getText().toString());
+        Obj_editor.commit();
+
+    }*/
+
     public void Login(View v) {
         String usuario = user.getText().toString();
         String contra = contraseña.getText().toString();
@@ -154,14 +589,17 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent siguiente = new Intent(LoginActivity.this, Configuracion.class);
                 startActivity(siguiente);
+
+                SharedPreferences preferecias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                SharedPreferences.Editor Obj_editor = preferecias.edit();
+                Obj_editor.putString("usuario", user.getText().toString());
+                Obj_editor.putString("password", contraseña.getText().toString());
             } else {
 
                 Toast.makeText(LoginActivity.this, "Procesando", Toast.LENGTH_LONG).show();
 
-
                 usuarioGlobal = user.getText().toString();
                 contraseñaGlobal = contraseña.getText().toString();
-
 
                 //si llega a dar timeout
                 final OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -178,11 +616,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 Conexion conexion = retrofit.create(Conexion.class);
-
-                Cuerpo2 login = new Cuerpo2(usuario, contra, "ADUANA", "21602", "A");
+                Cuerpo2 login = new Cuerpo2(usuario, contra, sucursalGlobal, "21602", estadoGlobal);
 
                 Call<Cuerpo2> call = conexion.getUser(login);
-
                 call.enqueue(new Callback<Cuerpo2>() {
 
                     //respuesta exitosa
@@ -193,16 +629,12 @@ public class LoginActivity extends AppCompatActivity {
                             int statusCode = response.code();
 
                             //llamada de la clase cuerpo y su respuesta de body
-
                             if (statusCode <= 200) {
                                 Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
                                 Intent siguiente = new Intent(LoginActivity.this, PrimeraPantalla.class);
                                 startActivity(siguiente);
-
                             } else {
-
                                 Toast.makeText(LoginActivity.this, "error ", Toast.LENGTH_LONG).show();
-
                             }
                         }else{
                             Toast.makeText(LoginActivity.this, "", Toast.LENGTH_LONG).show();
@@ -215,18 +647,14 @@ public class LoginActivity extends AppCompatActivity {
                     public void onFailure(Call<Cuerpo2> call, Throwable t) {
                         //Toast.makeText(LoginActivity.this, "fallida", Toast.LENGTH_LONG).show();
                         Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-
                         user.setText("mensaje " + t);
-
                     }
                 });
-
 
                 SharedPreferences preferecias = getSharedPreferences("datos", Context.MODE_PRIVATE);
                 SharedPreferences.Editor Obj_editor = preferecias.edit();
                 Obj_editor.putString("usuario", user.getText().toString());
                 Obj_editor.putString("password", contraseña.getText().toString());
-
                 Obj_editor.commit();
             }
         }
