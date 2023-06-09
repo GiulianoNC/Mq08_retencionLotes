@@ -1,11 +1,13 @@
 package com.quantum.mq08.mq08;
 
-import static com.quantum.mq08.mq08.Configuracion.checkGlobalLector;
-import static com.quantum.mq08.mq08.Configuracion.direc;
-import static com.quantum.mq08.mq08.Configuracion.estadoGlobal;
-import static com.quantum.mq08.mq08.Configuracion.loteGlobal;
-import static com.quantum.mq08.mq08.Configuracion.sucursalGlobal;
+
+import static com.quantum.mq08.mq08.LoginActivity.checkGlobalLector;
 import static com.quantum.mq08.mq08.LoginActivity.contraseñaGlobal;
+import static com.quantum.mq08.mq08.LoginActivity.direc;
+import static com.quantum.mq08.mq08.LoginActivity.estadoGlobal;
+import static com.quantum.mq08.mq08.LoginActivity.handHeldGlobal;
+import static com.quantum.mq08.mq08.LoginActivity.loteGlobal;
+import static com.quantum.mq08.mq08.LoginActivity.sucursalGlobal;
 import static com.quantum.mq08.mq08.LoginActivity.usuarioGlobal;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +50,8 @@ public class SegundaPantalla extends AppCompatActivity {
     ArrayList<String> listDatos,listDatos2;
     Button qr, ok;
 
+    //actualización 09/06/2023
+    boolean hand;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,23 @@ public class SegundaPantalla extends AppCompatActivity {
         ok = findViewById(R.id.btOK);
         colectado = findViewById(R.id.colectado2);
 
+        //actualización 09/06/2023
+        if(handHeldGlobal){
+            Toast.makeText(this, "activado handheld", Toast.LENGTH_LONG).show();
+        }
+        //para agregar instantaneo
+        Timer timer2 = new Timer();
+        timer2.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                //handheld
+                if(handHeldGlobal){
+                    agregar3();
+                }else{
+                    hand = false;
+                };
+            }
+        }, 0, 3000);
 
         recycler= (RecyclerView) findViewById(R.id.recycerId8);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -72,7 +93,6 @@ public class SegundaPantalla extends AppCompatActivity {
         //statusBar
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getWindow().setStatusBarColor(Color.rgb(102, 45, 145));  //Define color
-
 
         if(checkGlobalLector == false){
             colectadoQ.setVisibility(View.INVISIBLE);
@@ -89,13 +109,12 @@ public class SegundaPantalla extends AppCompatActivity {
         }else{
             sucursalGlobal = deposito.getText().toString();
         }
-
+        lote .requestFocus();
         if(estadoGlobal != null){
             retencion.setText( estadoGlobal);
         }else{
             estadoGlobal = retencion.getText().toString();
         }
-
 
         if(loteGlobal != null){
             lote.setText( loteGlobal);
@@ -105,14 +124,14 @@ public class SegundaPantalla extends AppCompatActivity {
             desplegable();
             desplegable2();
 
-        //para agregar instantaneo
+        /*//para agregar instantaneo
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 agregar3();
             }
-        }, 0, 10000);
+        }, 0, 10000);*/
     }
 
     public void scan(View v){
@@ -375,5 +394,7 @@ public class SegundaPantalla extends AppCompatActivity {
     private void limpia2 (){
         lote.setText("");
     }
+
+
 
 }

@@ -22,7 +22,7 @@ public class Datos  {
 
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private int id;
 
     @SerializedName("resultado")
     @Expose
@@ -68,9 +68,9 @@ public class Datos  {
         return id;
     }
 
-    public int setId(Integer id) {
+    public int setId(int id) {
         this.id = id;
-        return 0;
+        return id;
     }
 
     public String getResultado() {

@@ -1,5 +1,6 @@
 package com.quantum.mq08.mq08;
 
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -56,7 +57,6 @@ int id = 0;
         final DbDatos dbDatos = new DbDatos( VerActivity.this);
         datos = DbDatos.mostrarUnidad(id);
 
-
         if(datos != null){
             depositoV.setText(datos.getDeposito());
             retencionV.setText(datos.getRetencion());
@@ -96,7 +96,6 @@ int id = 0;
 
     }
 
-
     public void Salir(View v){
         Intent intent = new Intent(VerActivity.this, PrimeraPantalla.class);
         startActivity(intent);
@@ -106,4 +105,6 @@ int id = 0;
         Intent intent = new Intent(this, PrimeraPantalla.class);
         startActivity(intent);
     }
+
+
 }

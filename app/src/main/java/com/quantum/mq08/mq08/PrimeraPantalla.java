@@ -1,9 +1,14 @@
 package com.quantum.mq08.mq08;
 
-import static com.quantum.mq08.mq08.Configuracion.checkGlobalLector;
 
+import static com.quantum.mq08.database.DbDatos.actualizar;
+import static com.quantum.mq08.mq08.LoginActivity.handHeldGlobal;
+import static com.quantum.mq08.mq08.LoginActivity.visible;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +17,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -26,6 +33,8 @@ import com.quantum.mq08.database.DbDatos;
 import com.quantum.mq08.entidades.Datos;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PrimeraPantalla extends AppCompatActivity {
 
@@ -33,15 +42,14 @@ public class PrimeraPantalla extends AppCompatActivity {
     public RecyclerView datos;
     public ArrayList<Datos> listadatos;
     public Adaptador adaptador;
-
     public static int limpiezaGlobal = 0;
     public static String mostrarGlobal = "0";
-
 
     ArrayList<Datos> listaArrayContactos;
     Adaptador adapter;
     RecyclerView listaContactos;
     ProgressBar progresBar;
+    int act = 0;
 
 
     @Override
@@ -63,12 +71,32 @@ public class PrimeraPantalla extends AppCompatActivity {
         adaptador = new Adaptador(dbdatos.mostrarDatos());
         datos.setAdapter(adaptador);
 
+        //Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         if (limpiezaGlobal == 1){
-            dbdatos.eliminarTodo();
             limpiezaGlobal=0;
             mostrar();
+            Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    actualizado();
+                }
+            });
+
         }else{
             mostrar();
+            Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    actualizado();
+                }
+            });
+
         }
 
         //para limpieza
@@ -91,6 +119,36 @@ public class PrimeraPantalla extends AppCompatActivity {
                     }).show();
         });
     }
+
+    //menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu2, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //acciones de menu
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.action_sesion:
+
+                Intent siguiente = new Intent(PrimeraPantalla.this, LoginActivity.class);
+                startActivity(siguiente);
+
+                visible = "1";
+                break;
+
+            case R.id.action_configuracion:
+                Intent siguiente2 = new Intent(PrimeraPantalla.this, LoginActivity.class);
+                visible = "2";
+                startActivity(siguiente2);
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     public void limpiezaAutomatica(){
         DbDatos dbContactos = new DbDatos(PrimeraPantalla.this);
         dbContactos.eliminarTodo();
@@ -102,10 +160,14 @@ public class PrimeraPantalla extends AppCompatActivity {
     }
 
    public void mostrar(){
-        DbDatos dbContactos = new DbDatos(PrimeraPantalla.this);
-        listaArrayContactos = new ArrayList<>();
-        adapter = new Adaptador(dbContactos.mostrarDatos());
-        datos.setAdapter(adapter);
+
+          DbDatos dbContactos = new DbDatos(PrimeraPantalla.this);
+          listaArrayContactos = new ArrayList<>();
+          adapter = new Adaptador(dbContactos.mostrarDatos());
+          datos.setAdapter(adapter);
+
+
+       act =0;
 
    /*    if (limpiezaGlobal == 1){
            limpiezaAutomatica();
@@ -127,12 +189,22 @@ public class PrimeraPantalla extends AppCompatActivity {
                         listaArrayContactos = new ArrayList<>();
                         adapter = new Adaptador(dbContactos.enviarDatos());
                         datos.setAdapter(adapter);
-                     //   mostrar();
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Código a ejecutar después de 9 segundos
+                                actualizado();
+                            }
+                        }, 9000);
+
                         Toast.makeText(PrimeraPantalla.this,"Enviando", Toast.LENGTH_LONG).show();
-
-
                     }
                 }).show();
-    }
 
+
+    }
+    public void actualizado(){
+        mostrar();
+    }
 }

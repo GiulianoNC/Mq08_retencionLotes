@@ -1,29 +1,28 @@
 package com.quantum.mq08.database;
 
-import static com.quantum.mq08.mq08.Configuracion.direc;
-import static com.quantum.mq08.mq08.Configuracion.estadoGlobal;
-import static com.quantum.mq08.mq08.Configuracion.loteGlobal;
-import static com.quantum.mq08.mq08.Configuracion.restGlobal;
-import static com.quantum.mq08.mq08.Configuracion.sucursalGlobal;
+
 import static com.quantum.mq08.mq08.LoginActivity.contraseñaGlobal;
+import static com.quantum.mq08.mq08.LoginActivity.direc;
+import static com.quantum.mq08.mq08.LoginActivity.estadoGlobal;
+import static com.quantum.mq08.mq08.LoginActivity.restGlobal;
+import static com.quantum.mq08.mq08.LoginActivity.sucursalGlobal;
 import static com.quantum.mq08.mq08.LoginActivity.usuarioGlobal;
 import static com.quantum.mq08.mq08.PrimeraPantalla.limpiezaGlobal;
 import static com.quantum.mq08.mq08.PrimeraPantalla.mostrarGlobal;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Handler;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.quantum.mq08.conectividad.Conexion;
 import com.quantum.mq08.entidades.Datos;
+import com.quantum.mq08.mq08.VerActivity;
 import com.quantum.mq08.parseo.Cuerpo;
-import com.quantum.mq08.parseo.Cuerpo2;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -36,6 +35,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DbDatos extends DbHelper {
+    public static int actualizar = 0;
+
+    int id = 0;
     static Context context;
 
     public DbDatos(@Nullable Context context) {
@@ -119,6 +121,7 @@ public class DbDatos extends DbHelper {
 
                 //llamo a retrofit
                 //agregado
+                //idGlobal = datos.setId(Integer.valueOf(cursorDatos.getString(0)));
                 String DespositoString = datos.setDeposito(cursorDatos.getString(1));
                 String RetencionString = datos.setRetencion(cursorDatos.getString(2));
 
@@ -132,7 +135,6 @@ public class DbDatos extends DbHelper {
                             .readTimeout(500, TimeUnit.SECONDS)
                             .connectTimeout(500, TimeUnit.SECONDS)
                             .build();
-
 
                     Retrofit retrofit = new Retrofit.Builder()
                             .baseUrl(direc)
@@ -149,39 +151,17 @@ public class DbDatos extends DbHelper {
                         @Override
                         public void onResponse(Call<Cuerpo> call, Response<Cuerpo> response) {
                             int statusCode = response.code();
-                          //  Toast.makeText(context,  ""+ statusCode ,Toast.LENGTH_SHORT).show();
 
-                            if (statusCode <= 200) {
+                            if (statusCode == 200) {
                                 Cuerpo cuerpo = response.body();
-
                                 String estado =cuerpo.getJdeStatus();
-
                                 editarContacto(idInt, DespositoString, RetencionString, ItemString, LoteString, " Procesado ");
                                 Toast.makeText(context, " Completado", Toast.LENGTH_SHORT).show();
-                                limpiezaGlobal = 1;
+                                actualizar= 1;
+                                eliminarDato(idInt);
+                               // limpiezaGlobal = 1;
                                 mostrarGlobal ="1";
                                 mostrarDatos();
-
-                               /* if (estado.equals("SUCCESS")) {
-
-                                    editarContacto(idInt, DespositoString, RetencionString, ItemString, LoteString, " Procesado ");
-                                    Toast.makeText(context, " Completado", Toast.LENGTH_SHORT).show();
-                                    limpiezaGlobal = 1;
-                                    mostrarGlobal ="1";
-                                    mostrarDatos();
-                                } else if (estado.equals("ERROR")){
-                                    editarContacto(idInt, DespositoString, RetencionString, ItemString, LoteString, " Error ");
-                                    Toast.makeText(context, " Completado pero con errores", Toast.LENGTH_SHORT).show();
-                                    mostrarDatos();
-                                    limpiezaGlobal = 1;
-                                    mostrarGlobal ="1";
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            eliminarTodo();
-                                        }
-                                    }, 3000);
-                                    */
 
                                 }else if (statusCode != 200) {
                                 editarContacto(idInt, DespositoString, RetencionString, ItemString, LoteString, " Error ");
@@ -189,14 +169,11 @@ public class DbDatos extends DbHelper {
                                 mostrarDatos();
                                 }else{
                                     Toast.makeText(context, " error ", Toast.LENGTH_SHORT).show();
-
                             }
                         }
-
                         @Override
                         public void onFailure(Call<Cuerpo> call, Throwable t) {
                             Toast.makeText(context, "No se conectó", Toast.LENGTH_SHORT).show();
-                            ;
                         }
                     });
                 }else  if(restGlobal.equals("3") ){
@@ -536,11 +513,10 @@ public class DbDatos extends DbHelper {
                 }
 
             } while (cursorDatos.moveToNext());
-
+            mostrarDatos();
         }
         cursorDatos.close();
         return listaDatos;
-
     }
 
     public boolean eliminarDato(int id) {
@@ -550,7 +526,6 @@ public class DbDatos extends DbHelper {
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         try {
-
             //validar por el ID
             db.execSQL("DELETE FROM " + NOMBRE_TABLA + " WHERE id = '" + id + "'");
             correcto = true;
@@ -562,6 +537,7 @@ public class DbDatos extends DbHelper {
             db.close();
         }
         return correcto;
+
     }
 
     public boolean eliminarTodo() {

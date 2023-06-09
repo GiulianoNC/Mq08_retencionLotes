@@ -19,7 +19,7 @@ import com.quantum.mq08.R;
 import com.quantum.mq08.database.DbHelper;
 
 public class Configuracion extends AppCompatActivity {
-    private TextView direccion, sucursal, estado,rest,desple,CBD;
+    /*private TextView direccion, sucursal, estado,rest,desple,CBD;
 
     public static String direc = null;
     public static String sucursalGlobal = null;
@@ -142,5 +142,5 @@ public class Configuracion extends AppCompatActivity {
             Toast.makeText(Configuracion.this,"..", Toast.LENGTH_LONG).show();
         }
 
-    }
+    }*/
 }
