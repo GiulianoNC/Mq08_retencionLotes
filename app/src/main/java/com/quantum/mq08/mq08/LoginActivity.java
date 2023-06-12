@@ -239,8 +239,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.action_configuracion:
-                Intent siguiente = new Intent(LoginActivity.this, Configuracion.class);
-                startActivity(siguiente);
+                logueo.setVisibility(View.INVISIBLE);
+                config.setVisibility(View.VISIBLE);
                 break;
         }
         return super.onOptionsItemSelected(item);
