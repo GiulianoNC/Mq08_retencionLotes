@@ -14,20 +14,31 @@
         tools:context=".Configuracion">
 
 
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/srcQuantumBackground"
+            android:layout_width="112dp"
+            android:layout_height="124dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="17dp"
+            android:visibility="visible" />
+
         <TextView
             android:id="@+id/colectado2"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:layout_above="@id/qrImage"
+            android:layout_above="@+id/button3"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/ic_borde4"
             android:gravity="center"
-            android:hint="Pallet escaneado"
+            android:hint="Último escaneado"
             android:inputType="textPersonName"
             android:textColor="@color/textColor"
             android:textColorHint="@color/colorQuantum" />
@@ -165,10 +176,10 @@
             android:id="@+id/button3"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/colectado2"
+            android:layout_above="@+id/qrImage"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="37dp"
             android:background="@drawable/ic_borde2"
             android:onClick="salir"
             android:text="volver"
@@ -178,9 +189,9 @@
             android:id="@+id/button4"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/colectado2"
+            android:layout_above="@+id/qrImage"
             android:layout_marginStart="30dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="37dp"
             android:background="@drawable/custom_button3"
             android:onClick="agregar"
             android:text="COLECTAR"
@@ -244,12 +255,12 @@
             android:id="@+id/lote"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_above="@+id/button4"
+            android:layout_above="@+id/colectado2"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/ic_borde"
             android:ems="10"
             android:gravity="center"
@@ -257,17 +268,6 @@
             android:textColor="@color/textColor"
             android:textColorHint="#C3C0C0"
             android:textSize="13sp" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            style="@style/srcQuantumBackground"
-            android:layout_width="112dp"
-            android:layout_height="124dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="17dp"
-            android:visibility="visible" />
 
         <include
             android:id="@+id/toolbar"
