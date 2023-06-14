@@ -323,6 +323,7 @@ public class SegundaPantalla extends AppCompatActivity {
 
             String strNew2 = lote.getText().toString();
             String loteString =  strNew2.replace(" ", "");
+            colectado.setText(strNew2);
 
             DbDatos dbDatos = new DbDatos(SegundaPantalla.this);
             dbDatos.insertaDatos(depositoString, retencionString, itemString, loteString, "pendiente");
