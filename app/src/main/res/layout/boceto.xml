@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/backgroundImg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mq08.LoginActivity">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+    tools:context=".mq08.LoginActivity" >
 
     <TextView
         android:id="@+id/handText"
@@ -42,73 +35,65 @@
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <ImageView
-        android:id="@+id/imageView2"
-        style="@style/srcQuantumLogo"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <ImageView
-        android:id="@+id/sun"
-        style="@style/SolLuna"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toStartOf="@+id/btnToggleDark"
-        app:layout_constraintHeight_percent="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintWidth_percent="0.05"
-        app:srcCompat="@drawable/sun" />
-
-    <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/imageView3"
         style="@style/srcQuantumBackground"
         android:layout_width="112dp"
         android:layout_height="124dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <ImageView
-        android:id="@+id/moon"
-        style="@style/SolLuna"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toStartOf="@id/guideline"
-        app:layout_constraintHeight_percent="0.05"
-        app:layout_constraintStart_toEndOf="@+id/btnToggleDark"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintWidth_percent="0.05"
-        app:srcCompat="@drawable/moon" />
-
-    <Switch
-        android:id="@+id/btnToggleDark"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/colorQuantum"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHeight_percent="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintWidth_percent="0.15" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="17dp"
+        android:visibility="visible" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/con"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
         app:passwordToggleDrawable="@drawable/custom_password_eye"
-        app:passwordToggleEnabled="true" />
+        app:passwordToggleEnabled="true"/>
 
+    <Switch
+        android:id="@+id/btnToggleDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto"
+        android:text="Dia/Noche"
+        android:textColor="@color/colorQuantum" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:fontFamily="@font/roboto"
+        android:text="Versión 2.0"
+        android:textColor="@color/colorQuantum"
+        android:textSize="10sp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        style="@style/srcQuantumLogo"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -118,19 +103,20 @@
 
     <TableLayout
         android:id="@+id/configuracion"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintWidth_percent="0.9">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnToggleDark"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/textView23"
@@ -140,7 +126,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
                 android:layout_span="2"
                 android:gravity="center"
@@ -151,7 +137,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <EditText
                 android:id="@+id/direccion2"
@@ -160,7 +146,7 @@
                 android:layout_below="@+id/textView"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_span="2"
                 android:background="@drawable/ic_borde"
                 android:ems="10"
@@ -174,7 +160,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/textView24"
@@ -196,7 +182,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <EditText
                 android:id="@+id/sucursal2"
@@ -219,7 +205,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/textView25"
@@ -251,7 +237,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <EditText
                 android:id="@+id/loteurl2"
@@ -287,7 +273,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/textView28"
@@ -320,14 +306,14 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <CheckBox
                 android:id="@+id/checkBoxLector2"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="35dp"
                 android:layout_below="@+id/textView22"
-                android:layout_marginEnd="35dp"
+                android:layout_alignParentEnd="true"
                 android:layout_span="1"
                 android:background="@drawable/ic_borde4"
                 android:button="@drawable/image_checkbox"
@@ -342,8 +328,6 @@
                 android:layout_height="35dp"
                 android:layout_below="@+id/textView22"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="55dp"
                 android:layout_span="1"
                 android:background="@drawable/ic_borde4"
                 android:button="@drawable/image_checkbox"
@@ -355,7 +339,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <Button
                 android:id="@+id/button8"
@@ -379,16 +363,16 @@
 
     <TableLayout
         android:id="@+id/logueo"
-        android:layout_width="300dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnToggleDark"
-        app:layout_constraintWidth_percent="0.9">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView3"
+        android:layout_below="@+id/btnToggleDark"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="30dp"
+        android:visibility="invisible">
 
         <TableRow
             android:layout_width="match_parent"
@@ -493,4 +477,4 @@
         </TableRow>
     </TableLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
