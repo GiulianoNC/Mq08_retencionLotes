@@ -10,7 +10,7 @@ android {
         applicationId "com.quantum.mq08"
         minSdk 24
         targetSdk 33
-        versionCode 9
+        versionCode 11
         versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

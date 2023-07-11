@@ -8,6 +8,13 @@
     tools:context=".mq08.LoginActivity">
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,7 +86,6 @@
         style="@style/SolLuna"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintHeight_percent="0.05"
         app:layout_constraintStart_toEndOf="@+id/btnToggleDark"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -92,11 +98,11 @@
         android:layout_height="0dp"
         android:fontFamily="@font/roboto"
         android:textColor="@color/colorQuantum"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHeight_percent="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintWidth_percent="0.15" />
+        app:layout_constraintWidth_percent="0.11" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/con"
@@ -120,7 +126,7 @@
         android:id="@+id/configuracion"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.7"
@@ -382,7 +388,7 @@
         android:layout_width="300dp"
         android:layout_height="0dp"
         android:layout_marginTop="40dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
@@ -457,7 +463,7 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 app:passwordToggleDrawable="@drawable/custom_password_eye"
-                app:passwordToggleEnabled="false">
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/contras"
@@ -467,6 +473,7 @@
                     android:background="@drawable/ic_borde"
                     android:gravity="center"
                     android:inputType="textPassword"
+                    android:paddingStart="40dp"
                     android:textColor="@color/textColor"
                     android:textColorHint="#706B6B"
                     android:textCursorDrawable="@color/divider"
@@ -476,20 +483,16 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button10"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="5dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/custom_button"
-                android:fontFamily="@font/roboto"
-                android:gravity="center"
                 android:onClick="Login"
-                android:text="iNGRESAR"
-                android:textSize="12sp" />
+                android:text="INGRESAR" />
         </TableRow>
     </TableLayout>
 
