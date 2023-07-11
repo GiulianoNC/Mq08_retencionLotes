@@ -19,7 +19,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="30dp"
             android:fillViewport="true"
-            android:scrollbars="horizontal"
+            android:scrollbars="horizontal|vertical"
             app:layout_constraintBottom_toTopOf="@+id/ln"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.040"

@@ -2,385 +2,378 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/backgroundImg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context=".mq08.SegundaPantalla">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayout2"
-        style="@style/backgroundImg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/ic_borde2"
+        android:onClick="Salir"
+        android:text="volver"
+        android:textColor="@color/colorQuantumLila"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/qrImage"
+        app:layout_constraintTop_toBottomOf="@+id/colectado2" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        style="@style/srcQuantumBackground"
+        android:layout_width="112dp"
+        android:layout_height="124dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="17dp"
         android:visibility="visible"
-        tools:context=".Configuracion">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/colectado2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/ic_borde4"
+        android:gravity="center"
+        android:hint="Último escaneado"
+        android:inputType="textPersonName"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/colorQuantum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lote" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+    <EditText
+        android:id="@+id/colectado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/ic_borde4"
+        android:gravity="center"
+        android:hint="Escanear acá"
+        android:inputType="textPersonName"
+        android:textColor="@color/textColor"
+        android:textColorHint="#9C27B0"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/btOK" />
 
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="90dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/loteV"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/ic_borde2"
-            android:onClick="Salir"
-            android:text="volver"
-            android:textColor="@color/colorQuantumLila"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/qrImage"
-            app:layout_constraintTop_toBottomOf="@+id/colectado2" />
+    <Button
+        android:id="@+id/btOK"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/custom_button"
+        android:onClick="ok"
+        android:text="ok"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            style="@style/srcQuantumBackground"
-            android:layout_width="112dp"
-            android:layout_height="124dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="17dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/qrInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
 
-        <TextView
-            android:id="@+id/colectado2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/ic_borde4"
-            android:gravity="center"
-            android:hint="Último escaneado"
-            android:inputType="textPersonName"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/colorQuantum"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lote" />
+    <Button
+        android:id="@+id/qrImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_baseline_qr_code_scanner_24"
+        android:backgroundTint="@color/colorQuantum"
+        android:onClick="scan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colectado2"
+        app:layout_constraintWidth_percent="0.25" />
 
-        <EditText
-            android:id="@+id/colectado"
+    <ScrollView
+        android:id="@+id/scTipoOrden"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:fadeScrollbars="false"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarThumbVertical="@android:drawable/btn_default_small"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="17dp"
-            android:background="@drawable/ic_borde4"
-            android:gravity="center"
-            android:hint="Escanear acá"
-            android:inputType="textPersonName"
-            android:textColor="@color/textColor"
-            android:textColorHint="#9C27B0"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/textView7"
-            app:layout_constraintEnd_toStartOf="@+id/btOK" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btOK"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="17dp"
-            android:background="@drawable/custom_button"
-            android:onClick="ok"
-            android:text="ok"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/textView7"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/qrInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="invisible" />
-
-        <Button
-            android:id="@+id/qrImage"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/ic_baseline_qr_code_scanner_24"
-            android:backgroundTint="@color/colorQuantum"
-            android:onClick="scan"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHeight_percent="0.15"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/colectado2"
-            app:layout_constraintWidth_percent="0.25" />
-
-        <ScrollView
-            android:id="@+id/scTipoOrden"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:fadeScrollbars="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarFadeDuration="0"
-            android:scrollbarThumbVertical="@android:drawable/btn_default_small"
-            android:scrollbars="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7">
-
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycerId8"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="5dp"
+                android:visibility="visible"
+                app:cornerRadius="20dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycerId8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="5dp"
-                    android:visibility="visible"
-                    app:cornerRadius="20dp">
+            </androidx.recyclerview.widget.RecyclerView>
 
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/p1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:textColor="#676262"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
-        </ScrollView>
-
-        <ScrollView
-            android:id="@+id/tp2"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:fadeScrollbars="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarFadeDuration="0"
-            android:scrollbarThumbVertical="@android:drawable/btn_default_small"
-            android:scrollbars="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/p1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textColor="#676262"
+                android:textSize="10sp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycerId9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:visibility="visible"
-                    app:cornerRadius="20dp">
+        </LinearLayout>
+    </ScrollView>
 
-                </androidx.recyclerview.widget.RecyclerView>
+    <ScrollView
+        android:id="@+id/tp2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:fadeScrollbars="false"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarThumbVertical="@android:drawable/btn_default_small"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8">
 
-                <TextView
-                    android:id="@+id/p2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:textColor="#676262"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
-        </ScrollView>
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="90dp"
-            android:layout_height="50dp"
-            android:background="@drawable/custom_button3"
-            android:onClick="agregar"
-            android:text="COLECTAR"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/qrImage"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/colectado2" />
-
-        <EditText
-            android:id="@+id/deposito"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/ic_borde"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="textPersonName"
-            android:textColor="@color/textColor"
-            android:textColorHint="#C3C0C0"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-        <EditText
-            android:id="@+id/retencion"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/ic_borde"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="textPersonName"
-            android:textColor="@color/textColor"
-            android:textColorHint="#C3C0C0"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-        <EditText
-            android:id="@+id/item"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/ic_borde"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="textPersonName"
-            android:textColor="@color/textColor"
-            android:textColorHint="#C3C0C0"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-        <EditText
-            android:id="@+id/lote"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/ic_borde"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="textPersonName"
-            android:textColor="@color/textColor"
-            android:textColorHint="#C3C0C0"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="41dp"
-            android:fontFamily="@font/roboto"
-            android:text="Versión 2.0"
-            android:textColor="@color/colorQuantum"
-            android:textSize="10sp"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycerId9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:visibility="visible"
+                app:cornerRadius="20dp">
 
-        <TextView
-            android:id="@+id/QTM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="9dp"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/colorQuantum"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="78dp" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="DEPOSITO"
-            android:textColor="@color/textColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            <TextView
+                android:id="@+id/p2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textColor="#676262"
+                android:textSize="10sp" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:gravity="center"
-            android:text="RETENCION"
-            android:textColor="@color/textColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scTipoOrden" />
+        </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:gravity="center"
-            android:text="ITEM"
-            android:textColor="@color/textColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tp2" />
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_button3"
+        android:onClick="agregar"
+        android:text="COLECTAR"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/qrImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colectado2" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:gravity="center"
-            android:text="LOTE/SERIE"
-            android:textColor="@color/textColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item" />
+    <EditText
+        android:id="@+id/deposito"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/ic_borde"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColor="@color/textColor"
+        android:textColorHint="#C3C0C0"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/retencion"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/ic_borde"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColor="@color/textColor"
+        android:textColorHint="#C3C0C0"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <EditText
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/ic_borde"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColor="@color/textColor"
+        android:textColorHint="#C3C0C0"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <EditText
+        android:id="@+id/lote"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/ic_borde"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:textColor="@color/textColor"
+        android:textColorHint="#C3C0C0"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="41dp"
+        android:fontFamily="@font/roboto"
+        android:text="Versión 2.0"
+        android:textColor="@color/colorQuantum"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/QTM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="9dp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/colorQuantum"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="DEPOSITO"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:text="RETENCION"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scTipoOrden" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:text="ITEM"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tp2" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:text="LOTE/SERIE"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
